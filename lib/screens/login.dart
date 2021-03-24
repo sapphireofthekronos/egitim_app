@@ -23,9 +23,10 @@ class login_pageState extends State<login_page> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Okul Numarası",
-                    labelStyle: TextStyle(color: Colors.green),
-                    hintText: "Okul Numarası"),
+                  ///hintText: "Okul Numarası",
+                  labelText: "Okul Numarası",
+                  labelStyle: TextStyle(color: Colors.black),
+                ),
                 validator: (okul_num) {
                   if (okul_num.isEmpty) {
                     return "Okul Numaranızı Giriniz";
@@ -42,11 +43,13 @@ class login_pageState extends State<login_page> {
               ),
               TextFormField(
                 decoration: InputDecoration(
-                    labelText: "Şifre",
-                    labelStyle: TextStyle(color: Colors.green),
-                    hintText: "Şifre"),
-                validator: (okul_num) {
-                  if (okul_num.isEmpty) {
+                  labelText: "Şifre",
+                  labelStyle: TextStyle(color: Colors.black),
+
+                  ///hintText: "Şifre"
+                ),
+                validator: (val) {
+                  if (val.isEmpty) {
                     return "Şifrenizi Giriniz";
                   } else {
                     return null;
