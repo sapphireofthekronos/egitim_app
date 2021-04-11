@@ -18,8 +18,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.redAccent,
-        accentColor: Colors.cyan[600],
+        primaryColor: Colors.black,
+        accentColor: Colors.red,
       ),
       home: LoginPage(),
     );

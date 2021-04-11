@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/html_parser.dart';
 
 class FromHelper {
   static Widget inputFieldWidget(BuildContext context, Icon icon,
@@ -43,6 +44,48 @@ class FromHelper {
                 child: icon,
               ),
             )),
+      ),
+    );
+  }
+
+  static Widget saveButton(
+    String buttonText,
+    Function ontap,
+  ) {
+    return Container(
+      height: 50,
+      width: 150,
+      child: GestureDetector(
+        onTap: () {
+          ontap();
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white,
+              style: BorderStyle.solid,
+              width: 1.0,
+            ),
+            color: Colors.blueAccent[400],
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  buttonText,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
