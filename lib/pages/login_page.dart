@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ht/services/ProgressHUD.dart';
+import 'package:ht/services/api_service.dart';
 import 'package:ht/untils/from_helper.dart';
+import 'package:http/http.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   String _username = "";
   String _pwd = "";
   bool hidePassword = true;
+  bool isApiCallProcess = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,11 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         key: _scaffoldkey,
-        body: _loginUISetup(context),
+        body: ProgressHUD(
+          child: _loginUISetup(context),
+          inAsyncCall: isApiCallProcess,
+          opacity: 0.3,
+        ),
       ),
     );
   }
@@ -134,6 +142,17 @@ class _LoginPageState extends State<LoginPage> {
               if (validateAndSave()) {
                 print("Okul Numarası: $_username");
                 print("Şifre: $_pwd");
+
+                setState(() {
+                  this.isApiCallProcess = true;
+                });
+
+                APIServices.loginCustomer(_username, _pwd).then((response) {
+                  setState(() {
+                    this.isApiCallProcess = false;
+                  });
+                  print(response);
+                });
               }
             },
           ),
